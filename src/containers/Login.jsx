@@ -36,7 +36,7 @@ const Login = () => {
         <p className='login__container--register'>
           No tienes ninguna cuenta
           {' '}
-          <a href='/'>Regístrate</a>
+          <a href='/register'>Regístrate</a>
         </p>
       </section>
     </section>
