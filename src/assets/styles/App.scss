@@ -7,3 +7,18 @@ body {
 * {
     box-sizing: border-box;
 }
+
+::placeholder {
+    color: white;
+}
+
+@media only screen and (max-width: 600px) {
+    .main__description--title {
+      font-size: 30px;
+    }
+  
+    .footer {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
