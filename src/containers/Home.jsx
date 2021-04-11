@@ -1,10 +1,8 @@
 import React from 'react';
-import Header from '@components/Header.jsx';
 import Search from '@components/Search.jsx';
 import Categories from '@components/Categories.jsx';
 import Carousel from '@components/Carousel.jsx';
 import CarouselItem from '@components/CarouselItem.jsx';
-import Footer from '@components/Footer.jsx';
 import useInitialState from '../hooks/useInitialState';
 import '@styles/App.scss';
 
@@ -14,7 +12,6 @@ const Home = () => {
   const initialState = useInitialState(API);
   return initialState.length === 0 ? <h1>Loading...</h1> : (
     <div className='App'>
-      <Header />
       <Search />
 
       {initialState.mylist.length > 0 && (
@@ -36,7 +33,6 @@ const Home = () => {
           {initialState.originals.map((video) => <CarouselItem key={video.id} {...video} />)}
         </Carousel>
       </Categories>
-      <Footer />
     </div>
   );
 };
