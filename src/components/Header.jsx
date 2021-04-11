@@ -1,12 +1,12 @@
 import React from 'react';
-import logoMyVideo from '@images/logo-Myvideo-colors.png';
+import logoMyVideoBW from '@images/logo-Myvideo-BW2.png';
 import userIcon from '@images/user-icon.png';
-import '@styles/App.scss';
+import '@styles/components/Header.scss';
 
 const Header = () => {
   return (
     <header className='header'>
-      <img className='header__img' src={logoMyVideo} alt='My Video' />
+      <img className='header__img' src={logoMyVideoBW} alt='My Video' />
       <div className='header__menu'>
         <div className='header__menu--profile'>
           <img src={userIcon} alt='' />

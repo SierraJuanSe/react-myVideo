@@ -1,10 +1,13 @@
 import React from 'react';
-import Header from '@components/Header';
+import Header from '@components/Header.jsx';
+import Search from '@components/Search.jsx';
+import '@styles/App.scss';
 
 const App = () => {
   return (
     <div className='App'>
       <Header />
+      <Search />
     </div>
   );
 };
