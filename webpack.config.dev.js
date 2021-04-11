@@ -9,7 +9,6 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.[contenthash].js',
-    assetModuleFilename: 'assets/images/[hash][ext][query]',
   },
   resolve: {
     extensions: ['.js', '.jsx'],
@@ -49,8 +48,15 @@ module.exports = {
         ],
       },
       {
-        test: /\.png/,
-        type: 'asset/resource',
+        test: /\.(png|gif|jpg)$/,
+        use: [
+          {
+            'loader': 'file-loader',
+            options: {
+              name: 'assets/images/[hash].[ext]',
+            },
+          },
+        ],
       },
     ],
   },
