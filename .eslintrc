@@ -34,6 +34,7 @@
             ["@templates",  "./src/templates/"],
             ["@components", "./src/components/"],
             ["@containers", "./src/containers/"],
+            ["@routes", "./src/routes/"],
             ["@styles", "./src/assets/styles/"],
             ["@images", "./src/assets/images/"]
           ]
