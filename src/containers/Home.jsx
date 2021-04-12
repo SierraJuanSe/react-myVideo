@@ -1,40 +1,45 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Search from '@components/Search.jsx';
 import Categories from '@components/Categories.jsx';
 import Carousel from '@components/Carousel.jsx';
 import CarouselItem from '@components/CarouselItem.jsx';
-import useInitialState from '../hooks/useInitialState';
 import '@styles/App.scss';
 
-const API = 'http://localhost:3000/initalState';
-
-const Home = () => {
-  const initialState = useInitialState(API);
-  return initialState.length === 0 ? <h1>Loading...</h1> : (
+const Home = ({ mylist, trends, originals }) => {
+  return (
     <div className='App'>
       <Search />
 
-      {initialState.mylist.length > 0 && (
+      {mylist.length > 0 && (
         <Categories title='My List'>
           <Carousel>
-            {initialState.mylist.map((video) => <CarouselItem key={video.id} {...video} />)}
+            {mylist.map((video) => <CarouselItem key={video.id} {...video} />)}
           </Carousel>
         </Categories>
       )}
 
       <Categories title='Trends'>
         <Carousel>
-          {initialState.trends.map((video) => <CarouselItem key={video.id} {...video} />)}
+          {trends.map((video) => <CarouselItem key={video.id} {...video} />)}
         </Carousel>
       </Categories>
 
       <Categories title='Originals'>
         <Carousel>
-          {initialState.originals.map((video) => <CarouselItem key={video.id} {...video} />)}
+          {originals.map((video) => <CarouselItem key={video.id} {...video} />)}
         </Carousel>
       </Categories>
     </div>
   );
 };
 
-export default Home;
+const mapStateToProps = (state) => {
+  return {
+    mylist: state.mylist,
+    trends: state.trends,
+    originals: state.originals,
+  };
+};
+
+export default connect(mapStateToProps, null)(Home);
