@@ -21,6 +21,11 @@ const reducer = (state, action) => {
         ...state,
         user: action.payload,
       };
+    case actions.logoutUser:
+      return {
+        ...state,
+        user: {},
+      };
     default:
       return state;
   }
