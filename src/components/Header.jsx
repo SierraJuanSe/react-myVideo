@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import logoMyVideoBW from '@images/logo-Myvideo-BW2.png';
 import userIcon from '@images/user-icon.png';
 import '@styles/components/Header.scss';
 
-const Header = () => {
+const Header = ({ user }) => {
   return (
     <header className='header'>
       <Link to='/'>
@@ -14,7 +15,7 @@ const Header = () => {
       <div className='header__menu'>
         <div className='header__menu--profile'>
           <img src={userIcon} alt='' />
-          <p>Profile</p>
+          <p>{user ? user.email : 'Profile'}</p>
         </div>
         <ul>
           <li><Link to='/login'>Log In</Link></li>
@@ -26,4 +27,10 @@ const Header = () => {
   );
 };
 
-export default Header;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  };
+};
+
+export default connect(mapStateToProps)(Header);

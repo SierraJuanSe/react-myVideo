@@ -14,20 +14,20 @@ const Home = ({ mylist, trends, originals }) => {
       {mylist.length > 0 && (
         <Categories title='My List'>
           <Carousel>
-            {mylist.map((video) => <CarouselItem key={video.id} {...video} />)}
+            {mylist.map((video) => (<CarouselItem key={video.id} {...video} isList />))}
           </Carousel>
         </Categories>
       )}
 
       <Categories title='Trends'>
         <Carousel>
-          {trends.map((video) => <CarouselItem key={video.id} {...video} />)}
+          {trends.map((video) => <CarouselItem key={video.id} {...video} isList={false} />)}
         </Carousel>
       </Categories>
 
       <Categories title='Originals'>
         <Carousel>
-          {originals.map((video) => <CarouselItem key={video.id} {...video} />)}
+          {originals.map((video) => <CarouselItem key={video.id} {...video} isList={false} />)}
         </Carousel>
       </Categories>
     </div>

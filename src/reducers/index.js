@@ -1,10 +1,25 @@
 
+import { actions } from '../actions';
+
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'SET_FAVORITE':
+    case actions.setFavorite:
+      if (!state.mylist.find((item) => item.id === action.payload.id)) {
+        return {
+          ...state,
+          mylist: [...state.mylist, action.payload],
+        };
+      }
+      return state;
+    case actions.deleteFavorite:
       return {
         ...state,
-        mylist: [...state.mylist, action.payload],
+        mylist: state.mylist.filter((item) => item.id !== action.payload),
+      };
+    case actions.loginUser:
+      return {
+        ...state,
+        user: action.payload,
       };
     default:
       return state;
@@ -12,3 +27,4 @@ const reducer = (state, action) => {
 };
 
 export default reducer;
+

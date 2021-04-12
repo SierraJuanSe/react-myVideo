@@ -4,13 +4,15 @@ import PropTypes from 'prop-types';
 import '@styles/components/CarouselItem.scss';
 import playIcon from '@images/play-icon.png';
 import plusIcon from '@images/plus-icon.png';
-import { setFavorite } from '../actions';
+import removeIcon from '@images/remove-icon.png';
+import { setFavorite, deleteFavorite } from '../actions';
 
 const CarouselItem = (props) => {
-  const { cover, title, year, contentRating, duration } = props;
+  const { id, cover, title, year, contentRating, duration, isList } = props;
   const handleSetFavorite = () => {
     props.setFavorite(
       {
+        id,
         cover,
         title,
         year,
@@ -19,18 +21,31 @@ const CarouselItem = (props) => {
       },
     );
   };
+  const handleDeleteFavorite = () => {
+    props.deleteFavorite(id);
+  };
   return (
     <div className='carousel-item'>
       <img className='carousel-item__img' src={cover} alt={title} />
       <div className='carousel-item__details'>
         <div>
           <img className='carousel-item__details--img' src={playIcon} alt='Play Icon' />
-          <img
-            className='carousel-item__details--img'
-            src={plusIcon}
-            alt='Plus Icon'
-            onClick={handleSetFavorite}
-          />
+          {!isList ? (
+            <img
+              className='carousel-item__details--img'
+              src={plusIcon}
+              alt='Plus Icon'
+              onClick={handleSetFavorite}
+            />
+          ) : (
+            <img
+              className='carousel-item__details--img'
+              src={removeIcon}
+              alt='Plus Icon'
+              onClick={handleDeleteFavorite}
+            />
+          )}
+
         </div>
         <p className='carousel-item__details--title'>{title}</p>
         <p className='carousel-item__details--subtitle'>
@@ -42,6 +57,7 @@ const CarouselItem = (props) => {
 };
 
 CarouselItem.propTypes = {
+  id: PropTypes.number,
   cover: PropTypes.string,
   title: PropTypes.string,
   year: PropTypes.number,
@@ -51,6 +67,7 @@ CarouselItem.propTypes = {
 
 const mapDispatchToProps = {
   setFavorite,
+  deleteFavorite,
 };
 
 export default connect(null, mapDispatchToProps)(CarouselItem);
