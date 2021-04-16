@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import classNames from 'classnames';
 import logoMyVideoBW from '@images/logo-Myvideo-BW2.png';
 import userIcon from '@images/user-icon.png';
 import gravatar from '@utils/gravatar';
@@ -8,15 +9,20 @@ import { logoutUser } from '../actions';
 import '@styles/components/Header.scss';
 
 const Header = (props) => {
-  const { user } = props;
+  const { user, isLogin, isRegister } = props;
   const hasUSer = Object.keys(user).length > 0;
 
   const handleLogOut = () => {
     props.logoutUser(user);
   };
 
+  const headerClass = classNames('header', {
+    isLogin,
+    isRegister,
+  });
+
   return (
-    <header className='header'>
+    <header className={headerClass}>
       <Link to='/'>
         <img className='header__img' src={logoMyVideoBW} alt='My Video' />
       </Link>

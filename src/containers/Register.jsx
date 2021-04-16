@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Header from '@components/Header.jsx';
 import '@styles/components/Register.scss';
 import { connect } from 'react-redux';
 import { registerUser } from '../actions';
@@ -25,39 +26,42 @@ const Register = (props) => {
   };
 
   return (
-    <section className='register'>
-      <section className='register__container'>
-        <h2>Regístrate</h2>
-        <form className='register__container--form' onSubmit={handleSubmit}>
-          <input
-            name='name'
-            className='input'
-            type='text'
-            placeholder='Name'
-            onChange={handleInput}
-            required
-          />
-          <input
-            name='email'
-            className='input'
-            type='email'
-            placeholder='Email'
-            onChange={handleInput}
-            required
-          />
-          <input
-            name='password'
-            className='input'
-            type='password'
-            placeholder='Password'
-            onChange={handleInput}
-            required
-          />
-          <button type='submit' className='button'>Registrarme</button>
-        </form>
-        <Link to='/login'>Iniciar sesión</Link>
+    <>
+      <Header isRegister />
+      <section className='register'>
+        <section className='register__container'>
+          <h2>Regístrate</h2>
+          <form className='register__container--form' onSubmit={handleSubmit}>
+            <input
+              name='name'
+              className='input'
+              type='text'
+              placeholder='Name'
+              onChange={handleInput}
+              required
+            />
+            <input
+              name='email'
+              className='input'
+              type='email'
+              placeholder='Email'
+              onChange={handleInput}
+              required
+            />
+            <input
+              name='password'
+              className='input'
+              type='password'
+              placeholder='Password'
+              onChange={handleInput}
+              required
+            />
+            <button type='submit' className='button'>Registrarme</button>
+          </form>
+          <Link to='/login'>Iniciar sesión</Link>
+        </section>
       </section>
-    </section>
+    </>
   );
 };
 
