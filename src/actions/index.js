@@ -4,6 +4,7 @@ export const actions = {
   loginUser: 'LOGIN_USER',
   logoutUser: 'LOGOUT_USER',
   registerUser: 'REGISTER_USER',
+  setPlaying: 'SET_PLAYING',
 };
 
 export const setFavorite = (payload) => ({
@@ -28,5 +29,10 @@ export const logoutUser = (payload) => ({
 
 export const registerUser = (payload) => ({
   type: actions.registerUser,
+  payload,
+});
+
+export const setPlaying = (payload) => ({
+  type: actions.setPlaying,
   payload,
 });
