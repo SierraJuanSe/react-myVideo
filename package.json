@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/SierraJuanSe/react-myVideo#readme",
   "dependencies": {
+    "@material-ui/core": "^4.11.4",
+    "@material-ui/icons": "^4.11.2",
     "babel-eslint": "^10.1.0",
     "classnames": "^2.3.1",
     "eslint": "^7.24.0",
